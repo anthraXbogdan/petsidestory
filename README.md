@@ -1,6 +1,6 @@
 # petsidestory demo project
 
-## A ReactJS eShop for selling exotic pets and live-food (state manegement: Context, Redux, lifting state up)
+## A ReactJS eShop for selling exotic pets and live-food (state manegement: Redux, Context, lifting state up)
 
 The project goal is to demonstrate front end web development skills, using React 18 (with Hooks).
 
@@ -18,7 +18,7 @@ The project goal is to demonstrate front end web development skills, using React
 
 ### The app consists of two parts:
 
--  an admin/dashboard (for adding, removing and editing content);
+-  an admin dashboard (for adding, removing and editing content);
 
 -  an eShop (developed mobile-first).
 
