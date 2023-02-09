@@ -1,0 +1,87 @@
+html {
+   background: rgb(242, 244, 245);
+   background: -moz-linear-gradient(
+      90deg,
+      rgba(242, 244, 245, 1) 70%,
+      rgba(255, 255, 255, 1) 100%
+   );
+   background: -webkit-linear-gradient(
+      90deg,
+      rgba(242, 244, 245, 1) 70%,
+      rgba(255, 255, 255, 1) 100%
+   );
+   background: linear-gradient(
+      90deg,
+      rgba(242, 244, 245, 1) 70%,
+      rgba(255, 255, 255, 1) 100%
+   );
+   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#f2f4f5",endColorstr="#ffffff",GradientType=1);
+
+   margin: 0;
+   box-sizing: border-box;
+   font-size: 10px;
+   padding: 0;
+   font-family: "Source Sans Pro", sans-serif;
+}
+
+body {
+   margin: 0;
+   /* Adjust font size */
+   font-size: 100%;
+   -webkit-text-size-adjust: 100%;
+   /* Font varient */
+   font-variant-ligatures: none;
+   -webkit-font-variant-ligatures: none;
+   /* Smoothing */
+   text-rendering: optimizeLegibility;
+   -moz-osx-font-smoothing: grayscale;
+   -webkit-font-smoothing: antialiased;
+   text-shadow: rgba(0, 0, 0, 0.01) 0 0 1px;
+}
+
+body,
+html {
+   min-width: 375px;
+}
+
+p {
+   margin: 0;
+}
+
+* ul {
+   list-style: none;
+   padding: 0;
+}
+
+* a {
+   text-decoration: none;
+   color: #2e2e2e;
+}
+
+.home-layout,
+.products-layout,
+.cart-layout,
+.myaccount-layout,
+.product-layout {
+   margin-block-start: 6.5rem;
+}
+
+@media screen and (min-width: 800px) {
+   .home-layout,
+   .products-layout,
+   .cart-layout,
+   .myaccount-layout,
+   .product-layout {
+      margin-block-start: 8rem;
+   }
+}
+
+@media screen and (min-width: 1500px) {
+   .home-layout,
+   .products-layout,
+   .cart-layout,
+   .myaccount-layout,
+   .product-layout {
+      margin-block-start: 9rem;
+   }
+}

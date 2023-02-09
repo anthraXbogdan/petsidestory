@@ -1,0 +1,156 @@
+.navbar {
+   position: fixed;
+   top: 0;
+   min-width: 370px;
+   width: 100%;
+   background-color: #f2f4f5;
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
+   padding: 0;
+   height: 6.5rem;
+   z-index: 100;
+   /* box-shadow: 0px 3px 7px 1px rgba(0, 0, 0, 0.07),
+      0px -3px 7px 1px rgba(0, 0, 0, 0.07); */
+}
+
+.nav-brand {
+   /* font-family: "Grape Nuts", cursive; */
+   font-family: "Open Sans", sans-serif;
+   font-size: 2.5rem;
+   font-weight: 400;
+   letter-spacing: -2.33px;
+   color: #f73a14;
+   line-height: 1;
+   padding-inline-start: 1rem;
+}
+
+.nav-brand-dot {
+   font-family: "Rubik", sans-serif;
+   color: #4d4c4c;
+   font-weight: 800;
+}
+
+.navbar ul {
+   padding: 0;
+}
+
+.navbar li {
+   display: inline-block;
+}
+
+.nav-item {
+   margin-inline-end: 2rem;
+}
+
+.nav-item a {
+   display: flex;
+   align-items: center;
+}
+
+.navbar .active {
+   padding-block-end: 1px;
+   border-block-end: 1px solid #f73a14;
+}
+
+.nav-item .link {
+   display: none;
+}
+
+.material-symbols-outlined {
+   font-variation-settings: "FILL" 0, "wght" 300, "GRAD" 200, "opsz" 48;
+   color: #3b3a3a;
+   font-size: 2rem;
+}
+
+.cart-count {
+   background-color: #f64843;
+   background-color: #3b3a3a;
+   color: #fff;
+   width: 1.8rem;
+   height: 1.8rem;
+   border-radius: 50%;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   font-size: 1rem;
+   font-weight: 500;
+   margin-inline-start: 0.2rem;
+}
+
+@media screen and (min-width: 800px) {
+   .navbar {
+      height: 8rem;
+   }
+
+   .nav-brand {
+      font-size: 4rem;
+      padding-inline-start: 2rem;
+   }
+
+   .material-symbols-outlined {
+      font-size: 3rem;
+   }
+
+   .nav-item {
+      margin-inline-end: 3rem;
+   }
+
+   .nav-item .link {
+      /* display: contents; */
+      font-size: 1.6rem;
+      font-weight: 300;
+   }
+
+   .cart-count {
+      font-size: 1.3rem;
+      width: 2.3rem;
+      height: 2.3rem;
+   }
+}
+
+@media screen and (min-width: 1000px) {
+   .nav-brand {
+      padding-inline-start: 10vw;
+   }
+
+   .nav-item .link {
+      display: contents;
+      font-size: 2.5rem;
+   }
+
+   .navbar .active {
+      color: #f73a14;
+      border: none;
+   }
+}
+
+@media screen and (min-width: 1350px) {
+   .nav-brand {
+      padding-inline-start: 15vw;
+   }
+}
+
+@media screen and (min-width: 1500px) {
+   .navbar {
+      height: 9rem;
+   }
+
+   .nav-brand {
+      font-size: 4.5rem;
+   }
+
+   .nav-item {
+      margin-inline-end: 5rem;
+   }
+
+   .nav-item .link {
+      display: contents;
+      font-size: 2.5rem;
+      font-weight: 300;
+   }
+
+   .material-symbols-outlined {
+      margin-inline-end: 0.5rem;
+   }
+}

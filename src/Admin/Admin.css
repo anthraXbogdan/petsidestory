@@ -1,0 +1,73 @@
+.context {
+   margin-block-start: 11rem;
+   margin-inline-start: 5vw;
+   margin-inline-end: 5vw;
+   padding: 3rem 15vw;
+   font-size: 1.4rem;
+   background-color: #fefefe;
+   border-radius: 1rem;
+}
+
+.context h1 {
+   text-align: center;
+   font-family: "Open Sans", sans-serif;
+   font-size: 4rem;
+   font-weight: 400;
+   letter-spacing: -2.33px;
+   color: #323ff0;
+   line-height: 1;
+}
+
+.context button {
+   font-size: 1.4rem;
+   padding: 1rem 4rem;
+   width: 50%;
+}
+
+.context label {
+   font-size: 1.6rem;
+}
+
+.context input {
+   padding: 0.5rem;
+   width: 80%;
+}
+
+.context textarea {
+   width: 80%;
+}
+
+.adminSections-wrapper {
+   display: grid;
+   grid-template-columns: 1fr;
+   gap: 1rem;
+}
+
+.adminSections-wrapper h2 {
+   margin: 0 0 0 1rem;
+   padding: 0;
+   font-family: "Open Sans", sans-serif;
+   font-size: 2rem;
+   font-weight: 500;
+   color: #111;
+   line-height: 1;
+}
+
+.adminSections-wrapper label {
+   display: block;
+}
+
+.admin-section {
+   margin-block-end: 3rem;
+   padding: 3rem 5rem;
+   background-color: #fff;
+   border: 1px solid #e2e2e2;
+   border-radius: 1rem;
+   display: grid;
+   grid-template-columns: 1fr;
+   gap: 1rem;
+}
+
+.active {
+   font-weight: 800;
+}

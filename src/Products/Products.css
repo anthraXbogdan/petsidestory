@@ -1,0 +1,209 @@
+.products-layout {
+   background: rgb(242, 244, 245);
+   background: -moz-linear-gradient(
+      90deg,
+      rgba(242, 244, 245, 1) 70%,
+      rgba(255, 255, 255, 1) 100%
+   );
+   background: -webkit-linear-gradient(
+      90deg,
+      rgba(242, 244, 245, 1) 70%,
+      rgba(255, 255, 255, 1) 100%
+   );
+   background: linear-gradient(
+      90deg,
+      rgba(242, 244, 245, 1) 70%,
+      rgba(255, 255, 255, 1) 100%
+   );
+   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#f2f4f5",endColorstr="#ffffff",GradientType=1);
+
+   padding-block-start: 2rem;
+   position: relative;
+}
+
+.products-layout h1 {
+   background: rgb(242, 244, 245);
+   background: -moz-linear-gradient(
+      90deg,
+      rgba(242, 244, 245, 1) 70%,
+      rgba(255, 255, 255, 1) 100%
+   );
+   background: -webkit-linear-gradient(
+      90deg,
+      rgba(242, 244, 245, 1) 70%,
+      rgba(255, 255, 255, 1) 100%
+   );
+   background: linear-gradient(
+      90deg,
+      rgba(242, 244, 245, 1) 70%,
+      rgba(255, 255, 255, 1) 100%
+   );
+   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#f2f4f5",endColorstr="#ffffff",GradientType=1);
+
+   margin: 0 0 0 1rem;
+   padding-block-end: 1rem;
+   font-size: 3.5rem;
+   font-weight: 300;
+   letter-spacing: -2.5px;
+   word-spacing: 1rem;
+   color: #000;
+   position: sticky;
+   top: 6.5rem;
+}
+
+.products-layout h2 {
+   color: #f74843;
+   color: #787b7f;
+   font-size: 4.5rem;
+   font-weight: 800;
+   letter-spacing: -2.5px;
+   word-spacing: 1rem;
+   padding-block-end: 1rem;
+   line-height: 3.4rem;
+   border-block-end: 1px solid #f74843;
+   margin-block-end: 2rem;
+}
+
+.categories-wrapper {
+   margin-inline-start: 1rem;
+   margin-inline-end: 1rem;
+}
+
+.categories-wrapper .category-wrapper {
+   margin-block-end: 7rem;
+}
+
+.category-grid {
+   display: grid;
+   grid-template-columns: 1fr;
+   gap: 3rem;
+}
+
+.product {
+   background-color: none;
+   /* display: grid; */
+   /* grid-template-columns: 1fr; */
+   gap: 0.3rem;
+}
+
+.product h3 {
+   margin: 0;
+   font-size: 2.2rem;
+   font-weight: 500;
+   letter-spacing: -1.2px;
+   word-spacing: 0.2rem;
+   line-height: 0;
+   color: #333;
+   text-align: left;
+   padding-block-end: 2rem;
+}
+
+.plus-highlight {
+   font-family: "Rubik", sans-serif;
+   font-weight: 500;
+   color: #f74843;
+   line-height: 0px;
+   font-size: 4rem;
+}
+
+.product-image {
+   border: none;
+   object-fit: cover;
+   object-position: center;
+}
+
+@media screen and (min-width: 800px) {
+   .products-layout h1 {
+      margin-inline-start: 2rem;
+      font-size: 7rem;
+      font-weight: 800;
+      color: #404040;
+   }
+
+   .categories-wrapper {
+      margin-inline-start: 2rem;
+   }
+
+   .category-grid {
+      grid-template-columns: 1fr 1fr;
+      gap: 2.5rem;
+   }
+
+   img {
+      height: 20rem;
+   }
+
+   .product {
+      padding: 2rem 2rem 2rem 0;
+      background-color: #fff;
+      padding: 2rem;
+      box-shadow: 0 1px 6px rgba(154, 168, 192, 0.1),
+         0 5px 11px rgba(154, 168, 192, 0.2);
+   }
+
+   .product-image {
+      border-radius: 1.5rem;
+   }
+}
+
+@media screen and (min-width: 1000px) {
+   .products-layout {
+      padding-block-start: 8rem;
+   }
+
+   .products-layout h1 {
+      margin-inline-start: 10vw;
+   }
+
+   .categories-wrapper {
+      margin-inline-start: 10vw;
+      margin-inline-end: 7vw;
+   }
+
+   .category-grid {
+      gap: 3rem;
+   }
+
+   img {
+      height: 25rem;
+   }
+}
+
+@media screen and (min-width: 1350px) {
+   .products-layout h1 {
+      margin-inline-start: 15vw;
+   }
+
+   .categories-wrapper {
+      margin-inline-start: 15vw;
+      margin-inline-end: 20vw;
+   }
+}
+
+@media screen and (min-width: 1500px) {
+   .products-layout h1 {
+      margin-inline-start: 15vw;
+   }
+
+   .categories-wrapper {
+      margin-inline-start: 15vw;
+      margin-inline-end: 20vw;
+   }
+
+   .category-grid {
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 2rem;
+   }
+
+   .products-layout h2 {
+      margin-inline-end: 0;
+   }
+
+   .product h3 {
+      font-size: 2.5rem;
+   }
+
+   .plus-highlight {
+      font-size: 7rem;
+   }
+}

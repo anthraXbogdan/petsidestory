@@ -1,0 +1,30 @@
+.productInfo-layout {
+   margin-inline-start: 1rem;
+   margin-inline-end: 1rem;
+}
+
+.productInfo-layout textarea {
+   font-family: "Open Sans", sans-serif;
+   width: 100%;
+   border: none;
+   height: 50vh;
+   font-size: 1.5rem;
+   line-height: 2.6rem;
+   word-spacing: 0.3rem;
+   color: #353535;
+   resize: none;
+}
+
+@media screen and (min-width: 1350px) {
+   .productInfo-layout {
+      margin-inline-start: 10vw;
+      margin-inline-end: 10vw;
+   }
+}
+
+@media screen and (min-width: 1500px) {
+   .productInfo-layout {
+      margin-inline-start: 12vw;
+      margin-inline-end: 12vw;
+   }
+}
