@@ -3,7 +3,7 @@ import "./Admin.css";
 
 export default function Admin() {
    return (
-      <div className="context">
+      <div className="admin-layout">
          <h1>Admin Panel</h1>
 
          <div className="adminSections-wrapper">

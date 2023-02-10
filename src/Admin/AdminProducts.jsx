@@ -1,7 +1,7 @@
 import { useContext, useEffect } from "react";
 import { AdminContext } from "../AppContext";
 
-export default function NewProduct() {
+export default function AdminProducts() {
    const {
       selectedCategory,
       onCategorySelect,
@@ -29,11 +29,11 @@ export default function NewProduct() {
    }, []);
 
    return (
-      <div className="newProduct-layout">
-         <h1>New Product</h1>
+      <div className="adminProducts-layout">
+         <h1>Products</h1>
 
-         <h2 className="section-title">Add New Product</h2>
-         <div className="admin-section newProduct-wrapper">
+         <div className="admin-section">
+            <h2 className="section-title">Add Product</h2>
             <div>
                <label htmlFor="product-category">Select a category</label>
                <select
@@ -92,11 +92,10 @@ export default function NewProduct() {
             </div>
             <button onClick={onAddNewProductClick}>Add a new product</button>
          </div>
-
-         <h2 className="section-title">Remove a Product</h2>
          <div className="admin-section">
+            <h2 className="section-title">Delete Product</h2>
             <div>
-               <label htmlFor="product">Select a Product to be removed</label>
+               <label htmlFor="product">Select a Product to be deleted</label>
                <select
                   id="product"
                   value={selectedProduct}

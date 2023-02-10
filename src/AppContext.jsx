@@ -109,7 +109,8 @@ function AdminProvider(props) {
       setProducts(productList);
    };
 
-   // Add New Category of Products
+   // Categories Actions
+   // Add Category
    const handleCategoryIdChange = (e) => {
       setCategoryId(e.target.value);
    };
@@ -139,8 +140,42 @@ function AdminProvider(props) {
       }
    };
 
-   // Remove a category
-   const handleRemoveCategoryClick = async () => {};
+   const deleteTargetProduct = async (productId) => {
+      await deleteDoc(doc(ptsProducts, productId));
+   };
+
+   // Delete Category
+   const handleDeleteCategoryClick = async () => {
+      try {
+         const categoryRef = doc(ptsCategories, selectedCategory);
+         const categorySnap = await getDoc(categoryRef);
+         let targetCategName = "";
+
+         if (categorySnap.exists()) {
+            targetCategName = categorySnap.data().name;
+         }
+
+         const productsQuery = query(
+            ptsProducts,
+            where("category", "==", targetCategName)
+         );
+         const querySnapshot = await getDocs(productsQuery);
+
+         querySnapshot.forEach((doc) => {
+            deleteTargetProduct(doc.id);
+         });
+
+         await deleteDoc(doc(ptsCategories, selectedCategory));
+      } catch (error) {
+         console.error("Error deleting selected category: ", error);
+      } finally {
+         console.log(
+            `Category "${selectedCategory}" along with it's corresponding products was successfully removed from the database.`
+         );
+         setSelectedCategory("--select an option--");
+         getCategoryList(); // keep the list of categories updated
+      }
+   };
 
    // Add New Product to Existing Category
    const handleCategorySelect = (e) => {
@@ -188,7 +223,7 @@ function AdminProvider(props) {
    };
 
    // Products Actions
-   // Add New Product
+   // Add Product
    const handleProductIdChange = (e) => {
       setProductId(e.target.value);
    };
@@ -228,7 +263,7 @@ function AdminProvider(props) {
       }
    };
 
-   // Remove a product
+   // Delete Product
    const handleRemoveProductClick = async () => {
       let targetCategory = "";
 
@@ -339,6 +374,7 @@ function AdminProvider(props) {
       categoryName: categoryName,
       onCategoryNameChange: handleCategoryNameChange,
       onAddNewCategoryClick: handleAddNewCategoryClick,
+      onDeleteCategoryClick: handleDeleteCategoryClick,
       onGetCategoryList: getCategoryList,
       onGetProductList: getProductList,
       categories: categories,

@@ -1,7 +1,7 @@
 import { useContext, useEffect } from "react";
 import { AdminContext } from "../AppContext";
 
-export default function NewProductForExistingCateg() {
+export default function ProductForExistingCateg() {
    const {
       categories,
       onGetCategoryList,
@@ -22,10 +22,10 @@ export default function NewProductForExistingCateg() {
 
    return (
       <div className="newProductForExistingCateg-layout">
-         <h1>New Product for Existing Category</h1>
+         <h1>Product for existing category</h1>
 
-         <h2 className="section-title">Add New Product to Existing Category</h2>
          <div className="admin-section newCategoryProduct-wrapper">
+            <h2 className="section-title">Add Product to existing category</h2>
             <div>
                <label htmlFor="productCat-category">Select a category</label>
                <select
@@ -72,7 +72,7 @@ export default function NewProductForExistingCateg() {
                />
             </div>
             <button onClick={onAddNewProductToExistingCategClick}>
-               Add a new category product
+               Add product to category
             </button>
          </div>
       </div>

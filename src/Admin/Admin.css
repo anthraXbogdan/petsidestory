@@ -1,4 +1,4 @@
-.context {
+.admin-layout {
    margin-block-start: 11rem;
    margin-inline-start: 5vw;
    margin-inline-end: 5vw;
@@ -6,9 +6,10 @@
    font-size: 1.4rem;
    background-color: #fefefe;
    border-radius: 1rem;
+   min-height: 60vh;
 }
 
-.context h1 {
+.admin-layout h1 {
    text-align: center;
    font-family: "Open Sans", sans-serif;
    font-size: 4rem;
@@ -18,22 +19,26 @@
    line-height: 1;
 }
 
-.context button {
+.admin-layout button {
    font-size: 1.4rem;
    padding: 1rem 4rem;
    width: 50%;
 }
 
-.context label {
+.admin-layout textarea {
+   resize: vertical;
+}
+
+.admin-layout label {
    font-size: 1.6rem;
 }
 
-.context input {
+.admin-layout input {
    padding: 0.5rem;
    width: 80%;
 }
 
-.context textarea {
+.admin-layout textarea {
    width: 80%;
 }
 
@@ -43,9 +48,19 @@
    gap: 1rem;
 }
 
+.admin-layout ul {
+   display: flex;
+   justify-content: space-between;
+}
+
+.adminSections-wrapper a {
+   color: #333;
+   font-size: 2.5rem;
+   font-weight: 300;
+}
 .adminSections-wrapper h2 {
-   margin: 0 0 0 1rem;
-   padding: 0;
+   margin: 0;
+   padding: 0 0 1rem 0;
    font-family: "Open Sans", sans-serif;
    font-size: 2rem;
    font-weight: 500;
@@ -60,7 +75,7 @@
 .admin-section {
    margin-block-end: 3rem;
    padding: 3rem 5rem;
-   background-color: #fff;
+   background-color: #f4f4f4;
    border: 1px solid #e2e2e2;
    border-radius: 1rem;
    display: grid;
@@ -68,6 +83,14 @@
    gap: 1rem;
 }
 
-.active {
-   font-weight: 800;
+.admin-section-wrapper {
+   display: grid;
+   grid-template-columns: 1fr 1fr;
+   gap: 2rem;
+}
+
+.admin-layout .active li {
+   border-block-end: 2px solid #323ff0;
+   padding-block-end: 0.5rem;
+   font-weight: 500;
 }

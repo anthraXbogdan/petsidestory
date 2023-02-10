@@ -1,7 +1,7 @@
 import { useContext, useEffect } from "react";
 import { AdminContext } from "../AppContext";
 
-export default function NewItem() {
+export default function Items() {
    const {
       selectedProduct,
       onProductSelect,
@@ -20,10 +20,10 @@ export default function NewItem() {
 
    return (
       <div className="newItem-layout">
-         <h1>New Item</h1>
+         <h1>Items</h1>
 
-         <h2 className="section-title">Add New Item to Existing Product</h2>
          <div className="admin-section newItem-wrapper">
+            <h2 className="section-title">Add Item to existing product</h2>
             <div>
                <label htmlFor="item-category">Select a product</label>
                <select

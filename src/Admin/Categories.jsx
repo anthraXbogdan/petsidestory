@@ -1,7 +1,7 @@
 import { useContext, useEffect } from "react";
 import { AdminContext } from "../AppContext";
 
-export default function NewCategory() {
+export default function Categories() {
    const {
       categoryId,
       onCategoryIdChange,
@@ -12,6 +12,7 @@ export default function NewCategory() {
       onCategorySelect,
       categories,
       onGetCategoryList,
+      onDeleteCategoryClick,
    } = useContext(AdminContext);
 
    useEffect(() => {
@@ -19,11 +20,11 @@ export default function NewCategory() {
    }, []);
 
    return (
-      <div className="newCategory-layout">
-         <h1>New Category</h1>
+      <div className="categories-layout">
+         <h1>Categories</h1>
 
-         <h2 className="section-title">Add New Category of Products</h2>
          <div className="admin-section newCategory-wrapper">
+            <h2 className="section-title">Add Category</h2>
             <div>
                <label htmlFor="category-id">ID</label>
                <input
@@ -45,24 +46,29 @@ export default function NewCategory() {
             <button onClick={onAddNewCategoryClick}>Add a new category</button>
          </div>
 
-         <h2 className="section-title">Remove a category</h2>
          <div className="admin-section">
-            <label htmlFor="product-category">Select a category</label>
-            <select
-               id="product-category"
-               value={selectedCategory}
-               onChange={onCategorySelect}
-            >
-               <option value="">--select an option--</option>
-               {categories &&
-                  categories.map((category) => {
-                     return (
-                        <option key={category.id} value={category.name}>
-                           {category.name}
-                        </option>
-                     );
-                  })}
-            </select>
+            <h2 className="section-title">Delete Category</h2>
+            <div>
+               <label htmlFor="product-category">Select a category</label>
+               <select
+                  id="product-category"
+                  value={selectedCategory}
+                  onChange={onCategorySelect}
+               >
+                  <option value="">--select an option--</option>
+                  {categories &&
+                     categories.map((category) => {
+                        return (
+                           <option key={category.id} value={category.id}>
+                              {category.name}
+                           </option>
+                        );
+                     })}
+               </select>
+            </div>
+            <button onClick={onDeleteCategoryClick}>
+               Delete selected category
+            </button>
          </div>
       </div>
    );
