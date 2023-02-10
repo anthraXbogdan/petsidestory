@@ -16,10 +16,16 @@ export default function NewProduct() {
       productImageUrl,
       onProductImageUrlChange,
       onAddNewProductClick,
+      selectedProduct,
+      products,
+      onGetProductList,
+      onRemoveProductClick,
+      onProductSelect,
    } = useContext(AdminContext);
 
    useEffect(() => {
       onGetCategoryList();
+      onGetProductList();
    }, []);
 
    return (
@@ -85,6 +91,29 @@ export default function NewProduct() {
                />
             </div>
             <button onClick={onAddNewProductClick}>Add a new product</button>
+         </div>
+
+         <h2 className="section-title">Remove a Product</h2>
+         <div className="admin-section">
+            <div>
+               <label htmlFor="product">Select a Product to be removed</label>
+               <select
+                  id="product"
+                  value={selectedProduct}
+                  onChange={onProductSelect}
+               >
+                  <option value="">--select an option--</option>
+                  {products &&
+                     products.map((product) => {
+                        return (
+                           <option key={product.id} value={product.id}>
+                              {product.name}
+                           </option>
+                        );
+                     })}
+               </select>
+            </div>
+            <button onClick={onRemoveProductClick}>Delete Product</button>
          </div>
       </div>
    );

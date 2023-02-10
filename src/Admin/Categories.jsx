@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { AdminContext } from "../AppContext";
 
 export default function NewCategory() {
@@ -8,7 +8,15 @@ export default function NewCategory() {
       categoryName,
       onCategoryNameChange,
       onAddNewCategoryClick,
+      selectedCategory,
+      onCategorySelect,
+      categories,
+      onGetCategoryList,
    } = useContext(AdminContext);
+
+   useEffect(() => {
+      onGetCategoryList();
+   }, []);
 
    return (
       <div className="newCategory-layout">
@@ -35,6 +43,26 @@ export default function NewCategory() {
                />
             </div>
             <button onClick={onAddNewCategoryClick}>Add a new category</button>
+         </div>
+
+         <h2 className="section-title">Remove a category</h2>
+         <div className="admin-section">
+            <label htmlFor="product-category">Select a category</label>
+            <select
+               id="product-category"
+               value={selectedCategory}
+               onChange={onCategorySelect}
+            >
+               <option value="">--select an option--</option>
+               {categories &&
+                  categories.map((category) => {
+                     return (
+                        <option key={category.id} value={category.name}>
+                           {category.name}
+                        </option>
+                     );
+                  })}
+            </select>
          </div>
       </div>
    );

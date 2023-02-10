@@ -12,10 +12,10 @@ import ProductInfo from "./Product/ProductInfo/ProductInfo";
 import Admin from "./Admin/Admin";
 import { AdminProvider } from "./AppContext";
 import ProductImage from "./Admin/ProductImage";
-import NewCategory from "./Admin/NewCategory";
-import NewProductForExistingCateg from "./Admin/NewProductForExistingCateg";
-import NewProduct from "./Admin/NewProduct";
-import NewItem from "./Admin/NewItem";
+import Categories from "./Admin/Categories";
+import ProductsForExistingCateg from "./Admin/ProductsForExistingCateg";
+import AdminProducts from "./Admin/AdminProducts";
+import Items from "./Admin/Items";
 
 function App() {
    return (
@@ -37,16 +37,13 @@ function App() {
                   <Route path="/cart" element={<Cart />}></Route>
                   <Route path="/admin" element={<Admin />}>
                      <Route path="" element={<ProductImage />}></Route>
+                     <Route path="categories" element={<Categories />}></Route>
                      <Route
-                        path="newCategory"
-                        element={<NewCategory />}
+                        path="productsForExistingCateg"
+                        element={<ProductsForExistingCateg />}
                      ></Route>
-                     <Route
-                        path="newProductForExistingCateg"
-                        element={<NewProductForExistingCateg />}
-                     ></Route>
-                     <Route path="newProduct" element={<NewProduct />}></Route>
-                     <Route path="newItem" element={<NewItem />}></Route>
+                     <Route path="products" element={<AdminProducts />}></Route>
+                     <Route path="items" element={<Items />}></Route>
                   </Route>
                </Routes>
             </div>

@@ -11,17 +11,17 @@ export default function Admin() {
                <NavLink to="" end>
                   <li>Product Image</li>
                </NavLink>
-               <NavLink to="newCategory">
-                  <li>New Category</li>
+               <NavLink to="categories">
+                  <li>Categories</li>
                </NavLink>
-               <NavLink to="newProductForExistingCateg">
-                  <li>New Product for existing category</li>
+               <NavLink to="productsForExistingCateg">
+                  <li>Products for existing category</li>
                </NavLink>
-               <NavLink to="newProduct">
-                  <li>New Product</li>
+               <NavLink to="products">
+                  <li>Products</li>
                </NavLink>
-               <NavLink to="newItem">
-                  <li>New Item</li>
+               <NavLink to="items">
+                  <li>Items</li>
                </NavLink>
             </ul>
             <Outlet></Outlet>

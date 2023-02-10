@@ -7,7 +7,11 @@ import {
    arrayUnion,
    getDocs,
    getDoc,
+   deleteDoc,
    collection,
+   query,
+   where,
+   arrayRemove,
 } from "firebase/firestore";
 import { getStorage, ref, uploadBytes } from "firebase/storage";
 import { useState, useEffect, createContext } from "react";
@@ -135,6 +139,9 @@ function AdminProvider(props) {
       }
    };
 
+   // Remove a category
+   const handleRemoveCategoryClick = async () => {};
+
    // Add New Product to Existing Category
    const handleCategorySelect = (e) => {
       setSelectedCategory(e.target.value);
@@ -180,6 +187,7 @@ function AdminProvider(props) {
       }
    };
 
+   // Products Actions
    // Add New Product
    const handleProductIdChange = (e) => {
       setProductId(e.target.value);
@@ -208,13 +216,67 @@ function AdminProvider(props) {
       } catch (error) {
          console.error("Error adding new product: ", error);
       } finally {
-         console.log(`${productName} product successfully added to database.`);
+         console.log(
+            `The product "${productName}" was successfully added to database.`
+         );
          getProductList(); // Keep the list of products updated
          setSelectedCategory("--select an option--");
          setProductId("");
          setProductName("");
          setProductInfo("");
          setProductImageUrl("");
+      }
+   };
+
+   // Remove a product
+   const handleRemoveProductClick = async () => {
+      let targetCategory = "";
+
+      try {
+         // extract target category from selected product
+         if (selectedProduct) {
+            const productRef = doc(ptsProducts, selectedProduct);
+            const productSnap = await getDoc(productRef);
+
+            if (productSnap.exists()) {
+               targetCategory = productSnap.data().category;
+            }
+         }
+
+         // use target category to remove selected product(targetObj) from the array of products of that category
+         let targetObj = {};
+         let categId = "";
+
+         const categQuery = query(
+            ptsCategories,
+            where("name", "==", targetCategory)
+         );
+         const querySnapshot = await getDocs(categQuery);
+
+         querySnapshot.forEach((doc) => {
+            categId = doc.data().id;
+            targetObj = doc.data().products.filter((product) => {
+               return product.id === selectedProduct;
+            })[0];
+         });
+
+         if (categId) {
+            const categRef = doc(ptsCategories, categId);
+            await updateDoc(categRef, {
+               products: arrayRemove(targetObj),
+            });
+         }
+
+         // delete selected product
+         await deleteDoc(doc(ptsProducts, selectedProduct));
+      } catch (error) {
+         console.error("Error removing the product: ", error);
+      } finally {
+         console.log(
+            `The product "${selectedProduct}"  was successfully removed from the database.`
+         );
+         getProductList(); // Keep the list of products updated
+         setSelectedProduct("--select an option--");
       }
    };
 
@@ -298,6 +360,7 @@ function AdminProvider(props) {
       productInfo: productInfo,
       onProductInfoChange: handleProductInfoChange,
       onAddNewProductClick: handleAddNewProductClick,
+      onRemoveProductClick: handleRemoveProductClick,
       selectedProduct: selectedProduct,
       onProductSelect: handleProductSelect,
       itemDescription: itemDescription,
