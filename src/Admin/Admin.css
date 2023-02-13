@@ -94,3 +94,7 @@
    padding-block-end: 0.5rem;
    font-weight: 500;
 }
+
+.remove-item-section ul {
+   display: block;
+}

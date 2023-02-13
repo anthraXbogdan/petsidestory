@@ -1,4 +1,5 @@
-import { useContext, useEffect } from "react";
+import { isEmpty } from "@firebase/util";
+import { useContext, useEffect, useState } from "react";
 import { AdminContext } from "../AppContext";
 
 export default function Items() {
@@ -12,22 +13,30 @@ export default function Items() {
       itemPrice,
       onItemPriceChange,
       onAddNewItemClick,
+      onShowItems,
+      onRemoveItemClick,
+      items,
    } = useContext(AdminContext);
 
    useEffect(() => {
       onGetProductList();
    }, []);
 
+   useEffect(() => {
+      console.log(selectedProduct);
+      onShowItems();
+   }, [selectedProduct]);
+
    return (
       <div className="newItem-layout">
          <h1>Items</h1>
 
-         <div className="admin-section newItem-wrapper">
-            <h2 className="section-title">Add Item to existing product</h2>
+         <div className="admin-section">
+            <h2 className="section-title">Add Item to product</h2>
             <div>
-               <label htmlFor="item-category">Select a product</label>
+               <label htmlFor="category-for-add">Select a product</label>
                <select
-                  id="item-category"
+                  id="category-for-add"
                   value={selectedProduct}
                   onChange={onProductSelect}
                >
@@ -63,6 +72,43 @@ export default function Items() {
                />
             </div>
             <button onClick={onAddNewItemClick}>Add a new Item</button>
+         </div>
+         <div className="admin-section remove-item-section">
+            <h2 className="section-title">Remove Item from product</h2>
+            <div>
+               <label htmlFor="category-for-remove">Select a product</label>
+               <select
+                  id="category-for-remove"
+                  value={selectedProduct}
+                  onChange={onProductSelect}
+               >
+                  <option value="">--select an option--</option>
+                  {products &&
+                     products.map((product) => {
+                        return (
+                           <option key={product.id} value={product.id}>
+                              {product.name}
+                           </option>
+                        );
+                     })}
+               </select>
+            </div>
+
+            <ul>
+               {items &&
+                  selectedProduct !== "" &&
+                  items.map((item) => {
+                     return (
+                        <li key={item.id}>
+                           <p>{item.description}</p>
+                           <p>{item.price} lei</p>
+                           <button onClick={onRemoveItemClick}>
+                              Remove item
+                           </button>
+                        </li>
+                     );
+                  })}
+            </ul>
          </div>
       </div>
    );

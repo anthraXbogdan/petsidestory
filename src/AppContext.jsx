@@ -43,22 +43,23 @@ function AdminProvider(props) {
    const [products, setProducts] = useState([]);
    const [selectedProduct, setSelectedProduct] = useState("");
    const [productImageUrl, setProductImageUrl] = useState("");
-   // State for New Category
+   // State for Categories
    const [categoryId, setCategoryId] = useState("");
    const [categoryName, setCategoryName] = useState("");
    const [categoryProducts, setCategoryProducts] = useState([]);
-   // State for New Product for Existing Category
+   // State for Products in Existing Category
    const [productCategId, setProductCategId] = useState("");
    const [productCategName, setProductCategName] = useState("");
-   // State for New Product
+   // State for Products
    const [productId, setProductId] = useState("");
    const [productName, setProductName] = useState("");
    const [productInfo, setProductInfo] = useState("");
    const [productItems, setProductItems] = useState([]);
-   // State for New Item
+   // State for Items
    const [itemId, setItemId] = useState(0);
    const [itemDescription, setItemDescription] = useState("");
    const [itemPrice, setItemPrice] = useState("");
+   const [items, setItems] = useState([]);
 
    const ptsCategories = collection(db, "categories");
    const ptsProducts = collection(db, "products");
@@ -315,7 +316,8 @@ function AdminProvider(props) {
       }
    };
 
-   // Add New Item to existing product
+   // Items Actions
+   // Add Item
    const handleProductSelect = (e) => {
       setSelectedProduct(e.target.value);
    };
@@ -329,7 +331,7 @@ function AdminProvider(props) {
    };
 
    const setNewItemId = async () => {
-      const productRef = doc(db, "products", selectedProduct);
+      const productRef = doc(ptsProducts, selectedProduct);
       const docSnap = await getDoc(productRef);
 
       if (docSnap.exists()) {
@@ -363,6 +365,23 @@ function AdminProvider(props) {
          setItemDescription("");
          setItemPrice(0);
       }
+   };
+
+   // Delete Item
+   const showItems = async () => {
+      if (selectedProduct) {
+         const productRef = doc(ptsProducts, selectedProduct);
+         const docSnap = await getDoc(productRef);
+
+         if (docSnap.exists()) {
+            setItems(docSnap.data().items);
+            console.log(docSnap.data().items);
+         }
+      }
+   };
+
+   const handleRemoveItemClick = async () => {
+      console.log("Item removed");
    };
 
    const value = {
@@ -404,6 +423,9 @@ function AdminProvider(props) {
       itemPrice: itemPrice,
       onItemPriceChange: handleItemPriceChange,
       onAddNewItemClick: handleAddNewItemClick,
+      onShowItems: showItems,
+      onRemoveItemClick: handleRemoveItemClick,
+      items: items,
    };
 
    return (

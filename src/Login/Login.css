@@ -1,0 +1,102 @@
+#login-main {
+   background-color: #fefefe;
+   color: #000;
+   position: fixed;
+   bottom: 0;
+   width: 100%;
+   height: 100vh;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   font-size: 2rem;
+   z-index: 200;
+}
+
+#login-main section {
+   background-color: #f73a14;
+   width: 60rem;
+   padding: 3rem 6rem;
+   border-radius: 10px;
+   margin: 0 auto;
+}
+
+#login-form {
+   color: #3e3e3e;
+}
+
+.login-logo-wrapper {
+   margin-block-end: 5rem;
+}
+
+.login-logo-wrapper div {
+   display: flex;
+   justify-content: center;
+}
+
+.login-logo-wrapper h1 {
+   padding: 0;
+   color: #222;
+   font-size: 5rem;
+   margin-block-end: 2rem;
+}
+
+.login-logo-wrapper .nav-brand-dot {
+   color: #eee;
+}
+
+.login-logo-wrapper h2 {
+   font-family: "Open Sans", sans-serif;
+   font-size: 2.5rem;
+   font-weight: 400;
+   letter-spacing: -2.33px;
+   margin: 0;
+   padding: 0;
+   font-size: 3rem;
+   color: #1d1d1d;
+}
+
+.login-input-wrapper {
+   margin-block-end: 3rem;
+}
+
+.login-input-wrapper label {
+   display: block;
+   margin-block-end: 1rem;
+   font-weight: 500;
+   color: #fff;
+}
+
+.login-input-wrapper input {
+   height: 4rem;
+   width: 100%;
+   font-size: 2rem;
+   border: none;
+   color: #3e3e3e;
+   padding: 0 2rem;
+}
+
+.login-input-wrapper input:focus {
+   outline: none;
+}
+
+.login-btn-wrapper {
+   display: flex;
+   justify-content: flex-end;
+   margin: 4rem 0 1rem 0;
+}
+
+.login-btn {
+   background-color: #3f3f3f;
+   font-size: 2.5rem;
+   height: 5rem;
+   width: 50%;
+   border: none;
+   border-radius: 0.5rem;
+   color: #ddd;
+   cursor: pointer;
+}
+
+.login-btn:hover {
+   background-color: #000;
+   color: #fff;
+}
