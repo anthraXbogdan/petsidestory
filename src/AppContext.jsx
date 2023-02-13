@@ -1,3 +1,5 @@
+import { useState, useEffect, createContext } from "react";
+import { useNavigate } from "react-router-dom";
 import { initializeApp } from "firebase/app";
 import {
    getFirestore,
@@ -14,7 +16,7 @@ import {
    arrayRemove,
 } from "firebase/firestore";
 import { getStorage, ref, uploadBytes } from "firebase/storage";
-import { useState, useEffect, createContext } from "react";
+import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 
 const firebaseConfig = {
    apiKey: "AIzaSyA9nnfW1NYfeSnGWBEwZTTqTTu_hZsjNtg",
@@ -37,6 +39,12 @@ const storage = getStorage();
 const AdminContext = createContext();
 
 function AdminProvider(props) {
+   const navigate = useNavigate();
+   // State for Admin authentication
+   const [username, setUsername] = useState(null);
+   const [email, setEmail] = useState("");
+   const [password, setPassword] = useState("");
+
    const [file, setFile] = useState(null);
    const [categories, setCategories] = useState([]);
    const [selectedCategory, setSelectedCategory] = useState("");
@@ -63,6 +71,35 @@ function AdminProvider(props) {
 
    const ptsCategories = collection(db, "categories");
    const ptsProducts = collection(db, "products");
+
+   // Admin authentication
+   const handleLoginClick = (e) => {
+      e.preventDefault();
+
+      const auth = getAuth();
+      signInWithEmailAndPassword(auth, email, password)
+         .then((userCredential) => {
+            // Signed in
+            const user = userCredential.user;
+            setUsername(user.email);
+            navigate("/admin");
+            console.log(`User email: ${user.email}`);
+         })
+         .catch((error) => {
+            const errorCode = error.code;
+            const errorMessage = error.message;
+            console.log("Please try again");
+            console.log(errorCode, errorMessage);
+         });
+   };
+
+   const handleEmailChange = (e) => {
+      setEmail(e.target.value);
+   };
+
+   const handlePasswordChange = (e) => {
+      setPassword(e.target.value);
+   };
 
    // Upload product image file to Firebase Storage
    const handleFileChange = (e) => {
@@ -385,6 +422,12 @@ function AdminProvider(props) {
    };
 
    const value = {
+      // Admin authentication
+      onEmailChange: handleEmailChange,
+      onPasswordChange: handlePasswordChange,
+      onLoginClick: handleLoginClick,
+      username: username,
+
       ptsCategories: ptsCategories,
       ptsProducts: ptsProducts,
       onFileChange: handleFileChange,

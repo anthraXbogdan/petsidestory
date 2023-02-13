@@ -2,6 +2,8 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import Navbar from "./Navbar/Navbar";
 import Footer from "./Footer/Footer";
+import ProtectedRoute from "./ProtectedRoute";
+import Login from "./Login/Login";
 import Products from "./Products/Products";
 import Home from "./Home/Home";
 import Product from "./Product/Product";
@@ -35,15 +37,25 @@ function App() {
                   </Route>
                   <Route path="/account" element={<MyAccount />}></Route>
                   <Route path="/cart" element={<Cart />}></Route>
-                  <Route path="/admin" element={<Admin />}>
-                     <Route path="" element={<ProductImage />}></Route>
-                     <Route path="categories" element={<Categories />}></Route>
-                     <Route
-                        path="productsForExistingCateg"
-                        element={<ProductsForExistingCateg />}
-                     ></Route>
-                     <Route path="products" element={<AdminProducts />}></Route>
-                     <Route path="items" element={<Items />}></Route>
+
+                  <Route path="/login" element={<Login />}></Route>
+                  <Route element={<ProtectedRoute />}>
+                     <Route path="/admin" element={<Admin />}>
+                        <Route path="" element={<ProductImage />}></Route>
+                        <Route
+                           path="categories"
+                           element={<Categories />}
+                        ></Route>
+                        <Route
+                           path="productsForExistingCateg"
+                           element={<ProductsForExistingCateg />}
+                        ></Route>
+                        <Route
+                           path="products"
+                           element={<AdminProducts />}
+                        ></Route>
+                        <Route path="items" element={<Items />}></Route>
+                     </Route>
                   </Route>
                </Routes>
             </div>
