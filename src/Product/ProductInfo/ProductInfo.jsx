@@ -6,7 +6,7 @@ export default function ProductInfo() {
 
    return (
       <div className="productInfo-layout">
-         <textarea>{product.info}</textarea>
+         <textarea spellCheck="false">{product.info}</textarea>
       </div>
    );
 }
